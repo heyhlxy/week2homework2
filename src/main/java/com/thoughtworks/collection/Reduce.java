@@ -78,19 +78,19 @@ public class Reduce {
     	List<Integer> cmpArrayList = new ArrayList<Integer>(comArrayList);
 		Collections.sort(arrayList);
 		Collections.sort(cmpArrayList);
-		System.out.println(arrayList.toString());
-		System.out.println(cmpArrayList.toString());
 		return arrayList.toString().equals(cmpArrayList.toString());
     }
 
     public Double getMedianInLinkList(SingleLink<Integer>  singleLink) {
     	// 获取链表的中位数
-    	Collections.sort(arrayList);
+    	for(Integer i : arrayList){
+    		singleLink.addTailPointer(i);
+    	}
         int arrayListSize = arrayList.size();
         if(arrayListSize % 2 == 0){
-     	    return (arrayList.get(arrayListSize / 2) + arrayList.get(arrayListSize / 2 - 1)) / 2.0;
+     	    return (singleLink.getNode(arrayListSize / 2) + singleLink.getNode(arrayListSize / 2 + 1)) / 2.0;
         } else{
-     	    return Double.valueOf(arrayList.get(arrayListSize/2));
+     	    return Double.valueOf(singleLink.getNode(arrayListSize / 2 +1));
         }   
     }
 
